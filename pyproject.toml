@@ -7,7 +7,6 @@ authors = ["Burunoheck <brunoreeck6@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8.10"
 Django = "^4.1.1"
-mysqlclient = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
 

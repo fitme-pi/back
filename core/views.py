@@ -1,3 +1,3 @@
 from django.shortcuts import render
 
-# Create your views here.
+from core.models import TaxaAtividade, TipoUsuario, Comida, GrupoMuscular, Usuario, Alimentacao, Exercicio, Treino, Evolucao
