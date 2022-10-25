@@ -8,3 +8,9 @@ class Exercicio(models.Model):
     descricao = models.CharField(max_length=255)
     video_explicativo = models.CharField(max_length=45)
     grupo_muscular_idgrupo_muscular = models.ForeignKey(GrupoMuscular, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Exercícios"

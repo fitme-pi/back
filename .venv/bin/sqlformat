@@ -1,4 +1,4 @@
-#!/home/aluno/Downloads/a/back/.venv/bin/python
+#!/home/aluno/Downloads/b/back/.venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

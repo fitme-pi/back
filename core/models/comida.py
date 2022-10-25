@@ -7,3 +7,9 @@ class Comida(models.Model):
     carboidratos = models.PositiveIntegerField()
     proteinas = models.PositiveIntegerField()
     nome = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Comidas"

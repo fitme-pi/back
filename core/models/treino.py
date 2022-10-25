@@ -8,3 +8,9 @@ class Treino(models.Model):
     tempo_descanso = models.TimeField()
     usuario_idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     exercicio_idexercicio = models.ForeignKey(Exercicio, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Treino do usuário" + self.usuario_idusuario
+
+    class Meta:
+        verbose_name_plural = "Treinos"

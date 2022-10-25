@@ -12,3 +12,9 @@ class Usuario(models.Model):
     taxa_metabolica_basal = models.PositiveIntegerField()
     tipo_usuario_idtipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.CASCADE)
     taxa_atividade_idtaxa_atividade = models.ForeignKey(TaxaAtividade, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
+
+    class Meta:
+        verbose_name_plural = "Usuários"

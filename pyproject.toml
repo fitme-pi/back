@@ -8,6 +8,8 @@ authors = ["Burunoheck <brunoreeck6@gmail.com>"]
 python = "^3.8.10"
 Django = "^4.1.1"
 djangorestframework = "^3.14.0"
+django-cors-headers = "^3.13.0"
+djangorestframework-simplejwt = "^5.2.2"
 
 [tool.poetry.dev-dependencies]
 
