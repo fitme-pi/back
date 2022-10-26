@@ -5,5 +5,5 @@ from .grupoMuscular import GrupoMuscularSerializer
 from .usuario import UsuarioSerializer
 from .alimentacao import AlimentacaoSerializer
 from .exercicio import ExercicioSerializer
-from .treino import TreinoSerializer
+from .treino import TreinoSerializer, TreinoDetailSerializer
 from .evolucao import EvolucaoSerializer

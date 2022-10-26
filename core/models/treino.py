@@ -10,7 +10,7 @@ class Treino(models.Model):
     exercicio_idexercicio = models.ForeignKey(Exercicio, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Treino de " + str(self.usuario_idusuario)
+        return f"Treino de {self.usuario_idusuario}"
 
     class Meta:
         verbose_name_plural = "Treinos"
