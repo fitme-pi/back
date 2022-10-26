@@ -21,7 +21,7 @@ from core.views import (
 )
 
 router = DefaultRouter()
-router.register(r"alimentações", AlimentacaoViewSet)
+router.register(r"alimentacoes", AlimentacaoViewSet)
 router.register(r"comidas", ComidaViewSet)
 router.register(r"evolucoes", EvolucaoViewSet)
 router.register(r"exercicios", ExercicioViewSet)

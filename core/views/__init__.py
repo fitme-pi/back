@@ -2,8 +2,8 @@ from .taxaAtividade import TaxaAtividadeViewSet
 from .tipoUsuario import TipoUsuarioViewSet
 from .comida import ComidaViewSet
 from .grupoMuscular import GrupoMuscularViewSet
-from .usuario import UsuarioViewSet
 from .alimentacao import AlimentacaoViewSet
 from .exercicio import ExercicioViewSet
 from .treino import TreinoViewSet
 from .evolucao import EvolucaoViewSet
+from .usuario import UsuarioViewSet
