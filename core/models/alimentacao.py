@@ -12,7 +12,7 @@ class Alimentacao(models.Model):
     comida_idcomida = models.ForeignKey(Comida, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Alimentação do usuário" + self.usuario_idusuario
+        return "Alimentação de " + str(self.usuario_idusuario)
 
     class Meta:
         verbose_name_plural = "Alimentações"
