@@ -7,6 +7,7 @@ from rest_framework_simplejwt.views import (
 )
 
 from rest_framework.routers import DefaultRouter
+from .api import RegisterApi
 
 from core.views import (
     AlimentacaoViewSet,
@@ -33,6 +34,7 @@ router.register(r"usuarios", UsuarioViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("register/", RegisterApi.as_view()),
     path("", include(router.urls)),
     path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
