@@ -1,6 +1,7 @@
 from django.db import models
 
-from core.models import Exercicio, Usuario
+from .exercicio import Exercicio
+from .usuario import Usuario
 
 
 class Treino(models.Model):

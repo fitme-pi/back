@@ -1,6 +1,6 @@
 from django.db import models
 
-from core.models import GrupoMuscular
+from .grupoMuscular import GrupoMuscular
 
 
 class Exercicio(models.Model):
