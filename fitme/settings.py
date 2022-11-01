@@ -1,7 +1,8 @@
 import os
-import django
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
+import django
 from django.utils.encoding import force_str
 
 django.utils.encoding.force_text = force_str
@@ -34,7 +35,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
-    # "rest_framework_simplejwt",
+    "drf_spectacular",
     "core",
 ]
 
@@ -75,12 +76,19 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 DJOSER = {
     "SERIALIZERS": {
         "user_create": "core.serializers.usuario.CustomUserCreateSerializer"
     },
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Fitme API",
+    "DESCRIPTION": "API para ajudar pessoas a mudarem de vida, por meio da boa alimentação e da prática de exercício físico, incluindo endpoints e documentação.",
+    "VERSION": "1.0.0",
 }
 
 SIMPLE_JWT = {

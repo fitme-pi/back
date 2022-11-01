@@ -1,7 +1,7 @@
-from core.models import Usuario
-
-from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer
+from rest_framework import serializers
+
+from core.models import Usuario
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):

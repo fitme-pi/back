@@ -1,7 +1,7 @@
-from .taxaAtividade import TaxaAtividadeSerializer
-from .comida import ComidaSerializer
-from .grupoMuscular import GrupoMuscularSerializer
 from .alimentacao import AlimentacaoSerializer
-from .exercicio import ExercicioSerializer
-from .treino import TreinoSerializer, TreinoDetailSerializer
+from .comida import ComidaSerializer
 from .evolucao import EvolucaoSerializer
+from .exercicio import ExercicioSerializer
+from .grupoMuscular import GrupoMuscularSerializer
+from .taxaAtividade import TaxaAtividadeSerializer
+from .treino import TreinoDetailSerializer, TreinoSerializer

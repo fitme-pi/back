@@ -2,6 +2,7 @@ from django import forms
 
 from core.models import Usuario
 
+
 class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario

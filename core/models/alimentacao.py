@@ -1,7 +1,7 @@
 from django.db import models
 
-from .usuario import Usuario
 from .comida import Comida
+from .usuario import Usuario
 
 
 class Alimentacao(models.Model):

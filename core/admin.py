@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
@@ -8,10 +7,10 @@ from core.models import (
     Comida,
     Evolucao,
     Exercicio,
-    Usuario,
     GrupoMuscular,
     TaxaAtividade,
     Treino,
+    Usuario,
 )
 
 # Register your models here.
