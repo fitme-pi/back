@@ -1,5 +1,4 @@
 from .taxaAtividade import TaxaAtividade
-from .tipoUsuario import TipoUsuario
 from .comida import Comida
 from .grupoMuscular import GrupoMuscular
 from .usuario import Usuario

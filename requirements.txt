@@ -1,17 +1,10 @@
-
-  RuntimeError
-
-  The Poetry configuration is invalid:
-    - Additional properties are not allowed ('group' was unexpected)
-  
-
-  at ~/.poetry/lib/poetry/_vendor/py3.8/poetry/core/factory.py:43 in create_poetry
-       39│             message = ""
-       40│             for error in check_result["errors"]:
-       41│                 message += "  - {}\n".format(error)
-       42│ 
-    →  43│             raise RuntimeError("The Poetry configuration is invalid:\n" + message)
-       44│ 
-       45│         # Load package
-       46│         name = local_config["name"]
-       47│         version = local_config["version"]
+asgiref==3.5.2 ; python_version >= "3.8" and python_version < "4.0"
+backports-zoneinfo==0.2.1 ; python_version >= "3.8" and python_version < "3.9"
+django-cors-headers==3.13.0 ; python_version >= "3.8" and python_version < "4.0"
+django==4.1.2 ; python_version >= "3.8" and python_version < "4.0"
+djangorestframework-simplejwt==5.2.2 ; python_version >= "3.8" and python_version < "4.0"
+djangorestframework==3.14.0 ; python_version >= "3.8" and python_version < "4.0"
+pyjwt==2.6.0 ; python_version >= "3.8" and python_version < "4.0"
+pytz==2022.5 ; python_version >= "3.8" and python_version < "4.0"
+sqlparse==0.4.3 ; python_version >= "3.8" and python_version < "4.0"
+tzdata==2022.5 ; python_version >= "3.8" and python_version < "4.0" and sys_platform == "win32"

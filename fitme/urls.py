@@ -7,7 +7,6 @@ from rest_framework_simplejwt.views import (
 )
 
 from rest_framework.routers import DefaultRouter
-from .api import RegisterApi
 
 from core.views import (
     AlimentacaoViewSet,
@@ -16,9 +15,7 @@ from core.views import (
     ExercicioViewSet,
     GrupoMuscularViewSet,
     TaxaAtividadeViewSet,
-    TipoUsuarioViewSet,
     TreinoViewSet,
-    UsuarioViewSet,
 )
 
 router = DefaultRouter()
@@ -28,14 +25,12 @@ router.register(r"evolucoes", EvolucaoViewSet)
 router.register(r"exercicios", ExercicioViewSet)
 router.register(r"grupos_musculares", GrupoMuscularViewSet)
 router.register(r"taxas_de_atividade", TaxaAtividadeViewSet)
-router.register(r"tipos_de_usuario", TipoUsuarioViewSet)
 router.register(r"treinos", TreinoViewSet)
-router.register(r"usuarios", UsuarioViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("register/", RegisterApi.as_view()),
-    path("", include(router.urls)),
-    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/", include(router.urls)),
+    path("auth/", include("djoser.urls")),
+    path("auth/", include("djoser.urls.jwt")),
+    path("auth/", include("djoser.social.urls")),
 ]

@@ -1,18 +1,19 @@
 from django.db import models
 
-from core.models import Usuario, Comida
 from .usuario import Usuario
+from .comida import Comida
+
 
 class Alimentacao(models.Model):
     calorias_dia = models.PositiveIntegerField()
     gorduras_dia = models.PositiveIntegerField()
     carboidratos_dia = models.PositiveIntegerField()
     proteinas_dia = models.PositiveIntegerField()
-    usuario_idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    comida_idcomida = models.ForeignKey(Comida, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    comida = models.ForeignKey(Comida, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Alimentação de " + str(self.usuario_idusuario)
+        return f"Alimentação de {self.usuario.first_name}"
 
     class Meta:
-        verbose_name_plural = "Alimentações"
+        verbose_name_plural = "Alimentacoes"

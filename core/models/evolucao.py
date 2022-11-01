@@ -1,7 +1,7 @@
 from django.db import models
 
 from .usuario import Usuario
-import datetime
+
 
 class Evolucao(models.Model):
     data = models.DateField(auto_now=True)
@@ -9,10 +9,10 @@ class Evolucao(models.Model):
     massa = models.DecimalField(decimal_places=3, max_digits=6, default=0)
     altura = models.DecimalField(decimal_places=2, max_digits=3, default=0)
     imc = models.DecimalField(decimal_places=1, max_digits=3, default=0)
-    usuario_idusuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "Evolução de " + str(self.usuario_idusuario)
+        return f"Evolução de {self.usuario.first_name}"
 
     class Meta:
-        verbose_name_plural = "Evoluções"
+        verbose_name_plural = "Evolucoes"
