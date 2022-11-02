@@ -47,7 +47,6 @@ class UsuarioAdmin(UserAdmin):
 
 
 admin.site.register(Usuario, UsuarioAdmin)
-
 admin.site.register(Alimentacao)
 admin.site.register(Comida)
 admin.site.register(Evolucao)

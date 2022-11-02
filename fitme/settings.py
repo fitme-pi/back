@@ -19,7 +19,7 @@ SECRET_KEY = "django-insecure-2!mx7-zg69@!3kz5p(y!%7e54g$=lu)9xu$6wrsu%73ryz&jxx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -81,7 +81,8 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     "SERIALIZERS": {
-        "user_create": "core.serializers.usuario.CustomUserCreateSerializer"
+        "user_create": "core.serializers.usuario.CustomUserCreateSerializer",
+        "current_user": "core.serializers.usuario.CustomUserSerializer",
     },
 }
 

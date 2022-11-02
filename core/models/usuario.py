@@ -3,9 +3,10 @@ from django.db import models
 
 from .taxaAtividade import TaxaAtividade
 
+GENDER_CHOICES = (("M", "Masculino"), ("F", "Feminino"))
+
 
 class Usuario(AbstractUser):
-    GENDER_CHOICES = (("M", "Masculino"), ("F", "Feminino"))
     sexo = models.CharField(choices=GENDER_CHOICES, max_length=1)
     data_nasc = models.DateField(null=True, blank=True)
     taxa_metabolica_basal = models.PositiveIntegerField(null=True, blank=True)
