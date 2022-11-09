@@ -7,3 +7,10 @@ class ExercicioSerializer(ModelSerializer):
     class Meta:
         model = Exercicio
         fields = "__all__"
+
+
+class ExercicioDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Exercicio
+        fields = "__all__"
+        depth = 1
