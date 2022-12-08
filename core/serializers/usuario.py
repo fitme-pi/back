@@ -1,4 +1,5 @@
 from djoser.serializers import UserCreateSerializer, UserSerializer
+from django.contrib.auth.models import Group
 from rest_framework import serializers
 
 
@@ -12,6 +13,11 @@ class CustomUserCreateSerializer(UserCreateSerializer):
             "last_name",
             "password",
         )
+
+    def perform_create(self, validated_data):
+        user = super().perform_create(validated_data)
+        user.groups.add(Group.objects.get(name="usuario"))
+        return user
 
 
 class CustomUserSerializer(UserSerializer):
