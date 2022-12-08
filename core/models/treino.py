@@ -5,9 +5,10 @@ from .usuario import Usuario
 
 
 class Treino(models.Model):
-    num_reps = models.PositiveIntegerField()
-    num_series = models.PositiveIntegerField()
-    tempo_descanso = models.DurationField()
+    titulo = models.CharField(max_length=25, default="Novo Treino")
+    num_reps = models.IntegerField()
+    num_series = models.IntegerField()
+    tempo_descanso = models.IntegerField()
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     exercicio = models.ForeignKey(Exercicio, on_delete=models.CASCADE)
 
