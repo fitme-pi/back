@@ -2,18 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.utils.translation import gettext_lazy as _
 
-from core.models import (
-    Alimentacao,
-    Comida,
-    Evolucao,
-    Exercicio,
-    GrupoMuscular,
-    TaxaAtividade,
-    Treino,
-    Usuario,
-)
-
-# Register your models here.
+from core.models import Evolucao, Exercicio, GrupoMuscular, Treino, Usuario
 
 
 class UsuarioAdmin(UserAdmin):
@@ -47,10 +36,7 @@ class UsuarioAdmin(UserAdmin):
 
 
 admin.site.register(Usuario, UsuarioAdmin)
-admin.site.register(Alimentacao)
-admin.site.register(Comida)
 admin.site.register(Evolucao)
 admin.site.register(Exercicio)
 admin.site.register(GrupoMuscular)
-admin.site.register(TaxaAtividade)
 admin.site.register(Treino)

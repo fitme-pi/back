@@ -1,10 +1,11 @@
 import os
-import environ
 from datetime import timedelta
 from pathlib import Path
 
 import django
 from django.utils.encoding import force_str
+
+import environ
 
 django.utils.encoding.force_text = force_str
 
@@ -20,14 +21,6 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(",")
 DATABASES = {"default": env.db()}
 
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
-#     }
-# }
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,8 +30,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "djoser",
     "corsheaders",
+    "djoser",
     "rest_framework",
     "rest_framework.authtoken",
     "drf_spectacular",
@@ -48,13 +41,13 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
-    "django.middleware.common.CommonMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = "fitme.urls"
@@ -87,8 +80,8 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     "SERIALIZERS": {
-        "user_create": "core.serializers.usuario.CustomUserCreateSerializer",
-        "current_user": "core.serializers.usuario.CustomUserSerializer",
+        "user_create": "core.serializers.CustomUserCreateSerializer",
+        "current_user": "core.serializers.CustomUserSerializer",
     },
 }
 
