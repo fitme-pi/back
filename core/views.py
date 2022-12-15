@@ -16,6 +16,10 @@ from core.serializers import (
 class EvolucaoViewSet(ModelViewSet):
     queryset = Evolucao.objects.all()
 
+    def get_queryset(self):
+        usuario = self.request.user.id
+        return Treino.objects.filter(usuario=usuario)
+
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
             return EvolucaoDetailSerializer
