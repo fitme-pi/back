@@ -56,7 +56,7 @@ class Exercicio(models.Model):
 
 
 class ExercicioTreino(models.Model):
-    exercicio = models.ForeignKey(Exercicio, on_delete=models.PROTECT, related_name="+")
+    exercicio = models.ForeignKey(Exercicio, on_delete=models.CASCADE, related_name="+")
     num_reps = models.IntegerField(default=0)
     num_series = models.IntegerField(default=0)
     tempo_descanso = models.IntegerField(default=0)
