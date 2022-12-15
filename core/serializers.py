@@ -78,6 +78,7 @@ class GrupoMuscularSerializer(ModelSerializer):
 
 class TreinoSerializer(ModelSerializer):
     usuario = HiddenField(default=CurrentUserDefault())
+    exercicios = ExercicioTreinoSerializer(many=True)
 
     class Meta:
         model = Treino

@@ -59,15 +59,15 @@ class ExercicioTreino(models.Model):
     exercicio = models.ForeignKey(Exercicio, on_delete=models.PROTECT, related_name="+")
     num_reps = models.IntegerField(default=0)
     num_series = models.IntegerField(default=0)
-    tempo_descanso = models.IntegerField()
+    tempo_descanso = models.IntegerField(default=0)
 
     def __str__(self):
         return self.exercicio.nome
 
 
 class Treino(models.Model):
-    titulo = models.CharField(max_length=25, default="Novo Treino")
-    exercicio = models.ManyToManyField(ExercicioTreino, related_name="+")
+    titulo = models.CharField(max_length=35, default="Novo Treino")
+    exercicios = models.ManyToManyField(ExercicioTreino, related_name="+")
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     def __str__(self):
