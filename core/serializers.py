@@ -63,7 +63,7 @@ class ExercicioDetailSerializer(ModelSerializer):
 
 
 class ExercicioTreinoSerializer(ModelSerializer):
-    usuario = HiddenField(default=CurrentUserDefault())
+    exercicio = ExercicioDetailSerializer()
 
     class Meta:
         model = ExercicioTreino
@@ -84,6 +84,21 @@ class TreinoSerializer(ModelSerializer):
         model = Treino
         fields = "__all__"
 
+    def create(self, validated_data):
+        exercicios = validated_data.pop("exercicios")
+        exercicios_treino = []
+
+        for exercicio in exercicios:
+            exercicioCadastrado = ExercicioTreino.objects.create(**exercicio)
+            exercicioCadastrado.save()
+
+            exercicios_treino.append(exercicioCadastrado.id)
+
+        treino = Treino.objects.create(**validated_data)
+        treino.save()
+        treino.exercicios.set(exercicios_treino)
+        return treino
+
 
 class TreinoDetailSerializer(ModelSerializer):
     usuario = CustomUserNestedSerializer()
@@ -91,4 +106,4 @@ class TreinoDetailSerializer(ModelSerializer):
     class Meta:
         model = Treino
         fields = "__all__"
-        depth = 1
+        depth = 2
