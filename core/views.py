@@ -1,10 +1,12 @@
 from rest_framework.viewsets import ModelViewSet
 
-from core.models import Evolucao, Exercicio, GrupoMuscular, Treino
+from core.models import Evolucao, Exercicio, ExercicioTreino, GrupoMuscular, Treino
 from core.serializers import (
+    EvolucaoDetailSerializer,
     EvolucaoSerializer,
     ExercicioDetailSerializer,
     ExercicioSerializer,
+    ExercicioTreinoSerializer,
     GrupoMuscularSerializer,
     TreinoDetailSerializer,
     TreinoSerializer,
@@ -13,7 +15,11 @@ from core.serializers import (
 
 class EvolucaoViewSet(ModelViewSet):
     queryset = Evolucao.objects.all()
-    serializer_class = EvolucaoSerializer
+
+    def get_serializer_class(self):
+        if self.action in ["list", "retrieve"]:
+            return EvolucaoDetailSerializer
+        return EvolucaoSerializer
 
 
 class ExercicioViewSet(ModelViewSet):
@@ -23,6 +29,11 @@ class ExercicioViewSet(ModelViewSet):
         if self.action in ["list", "retrieve"]:
             return ExercicioDetailSerializer
         return ExercicioSerializer
+
+
+class ExercicioTreinoViewSet(ModelViewSet):
+    queryset = ExercicioTreino.objects.all()
+    serializer_class = ExercicioTreinoSerializer
 
 
 class GrupoMuscularViewSet(ModelViewSet):

@@ -1,10 +1,10 @@
 from django.contrib.auth.models import Group
 
-from rest_framework import serializers
-from rest_framework.serializers import ModelSerializer
 from djoser.serializers import UserCreateSerializer, UserSerializer
+from rest_framework import serializers
+from rest_framework.serializers import CurrentUserDefault, HiddenField, ModelSerializer
 
-from core.models import Evolucao, Exercicio, GrupoMuscular, Treino
+from core.models import Evolucao, Exercicio, ExercicioTreino, GrupoMuscular, Treino
 
 
 class CustomUserCreateSerializer(UserCreateSerializer):
@@ -29,10 +29,24 @@ class CustomUserSerializer(UserSerializer):
         fields = ("id", "username", "email", "first_name", "last_name", "is_staff")
 
 
+class CustomUserNestedSerializer(UserSerializer):
+    class Meta(UserSerializer.Meta):
+        fields = ("id", "username", "first_name", "last_name")
+        depth = 1
+
+
 class EvolucaoSerializer(ModelSerializer):
+    usuario = HiddenField(default=CurrentUserDefault())
+
     class Meta:
         model = Evolucao
         fields = "__all__"
+
+
+class EvolucaoDetailSerializer(ModelSerializer):
+    class Meta:
+        model = Evolucao
+        fields = ("altura", "data", "imc", "massa", "taxa_metabolica_basal")
 
 
 class ExercicioSerializer(ModelSerializer):
@@ -48,6 +62,14 @@ class ExercicioDetailSerializer(ModelSerializer):
         depth = 1
 
 
+class ExercicioTreinoSerializer(ModelSerializer):
+    usuario = HiddenField(default=CurrentUserDefault())
+
+    class Meta:
+        model = ExercicioTreino
+        fields = "__all__"
+
+
 class GrupoMuscularSerializer(ModelSerializer):
     class Meta:
         model = GrupoMuscular
@@ -55,12 +77,16 @@ class GrupoMuscularSerializer(ModelSerializer):
 
 
 class TreinoSerializer(ModelSerializer):
+    usuario = HiddenField(default=CurrentUserDefault())
+
     class Meta:
         model = Treino
         fields = "__all__"
 
 
 class TreinoDetailSerializer(ModelSerializer):
+    usuario = CustomUserNestedSerializer()
+
     class Meta:
         model = Treino
         fields = "__all__"

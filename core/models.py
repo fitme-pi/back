@@ -14,9 +14,13 @@ class Usuario(AbstractUser):
 
 class Evolucao(models.Model):
     taxa_metabolica_basal = models.IntegerField(null=True, blank=True)
-    altura = models.DecimalField(decimal_places=2, max_digits=3, default=0)
-    massa = models.DecimalField(decimal_places=3, max_digits=6, default=0)
-    imc = models.DecimalField(decimal_places=1, max_digits=3, default=0)
+    imc = models.DecimalField(
+        decimal_places=1, max_digits=3, default=0, null=True, blank=True
+    )
+    massa = models.DecimalField(
+        decimal_places=1, max_digits=4, default=0, null=True, blank=True
+    )
+    altura = models.IntegerField(default=0, null=True, blank=True)
     data = models.DateField(auto_now_add=True)
     usuario = models.ForeignKey(
         Usuario, on_delete=models.CASCADE, related_name="evolucoes"
@@ -40,7 +44,7 @@ class GrupoMuscular(models.Model):
 
 
 class Exercicio(models.Model):
-    nome = models.CharField(max_length=30)
+    nome = models.CharField(max_length=30, unique=True)
     descricao = models.TextField(max_length=500)
     video_explicativo = models.URLField()
     grupo_muscular = models.ForeignKey(
@@ -51,15 +55,14 @@ class Exercicio(models.Model):
         return self.nome
 
 
-class NumSeriesReps(models.Model):
-    num_reps = models.IntegerField()
-    num_series = models.IntegerField()
-
-
 class ExercicioTreino(models.Model):
     exercicio = models.ForeignKey(Exercicio, on_delete=models.PROTECT, related_name="+")
-    num_series_reps = models.ForeignKey(NumSeriesReps, on_delete=models.CASCADE)
+    num_reps = models.IntegerField(default=0)
+    num_series = models.IntegerField(default=0)
     tempo_descanso = models.IntegerField()
+
+    def __str__(self):
+        return self.exercicio.nome
 
 
 class Treino(models.Model):

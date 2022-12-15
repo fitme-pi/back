@@ -10,15 +10,16 @@ from rest_framework.routers import DefaultRouter
 
 from core.views import (
     EvolucaoViewSet,
+    ExercicioTreinoViewSet,
     ExercicioViewSet,
     GrupoMuscularViewSet,
     TreinoViewSet,
 )
 
-
 router = DefaultRouter()
 router.register(r"evolucoes", EvolucaoViewSet)
 router.register(r"exercicios", ExercicioViewSet)
+router.register(r"exerciciostreino", ExercicioTreinoViewSet)
 router.register(r"grupos_musculares", GrupoMuscularViewSet)
 router.register(r"treinos", TreinoViewSet)
 
