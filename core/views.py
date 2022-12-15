@@ -18,7 +18,7 @@ class EvolucaoViewSet(ModelViewSet):
 
     def get_queryset(self):
         usuario = self.request.user.id
-        return Treino.objects.filter(usuario=usuario)
+        return Evolucao.objects.filter(usuario=usuario)
 
     def get_serializer_class(self):
         if self.action in ["list", "retrieve"]:
