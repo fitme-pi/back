@@ -63,8 +63,6 @@ class ExercicioDetailSerializer(ModelSerializer):
 
 
 class ExercicioTreinoSerializer(ModelSerializer):
-    exercicio = ExercicioDetailSerializer()
-
     class Meta:
         model = ExercicioTreino
         fields = "__all__"
